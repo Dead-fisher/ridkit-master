@@ -24,7 +24,7 @@ def main():
         print("prepare gen_res")
         make_res.make_res(iter_index=iter_idx, json_file=rid_json, cv_file=cv_file, mol_path=mol_dir, base_dir=out_dir)
         print("prepare run res")
-        md_run.run_res (iter_index=iter_idx, json_file=rid_json, base_dir=out_dir)
+        run.run_res (iter_index=iter_idx, json_file=rid_json, base_dir=out_dir)
         print("prepare post res")
         post_process.post_res(iter_index=iter_idx, json_file=rid_json, cv_file=cv_file, base_dir=out_dir)
         print("prepare gen train")
