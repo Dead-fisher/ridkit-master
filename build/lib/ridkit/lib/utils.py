@@ -1,4 +1,4 @@
-import re, os, shutil, logging, json
+import re, os, shutil, logging, json, datetime
 from dpdispatcher.lazy_local_context import LazyLocalContext
 from dpdispatcher.submission import Task, Resources
 from dpdispatcher.pbs import PBS
@@ -117,3 +117,17 @@ def print_repeat_list (numb, item) :
         else :
             mylist += "," + str(item)
     return mylist
+
+
+def record_task(record_file, iter_idx, task_idx):
+    if os.path.basename(record_file) == '':
+        print("please assign a valid record file path.")
+        raise RuntimeError
+    if os.path.exists(record_file):
+        with open(record_file, 'a') as record:
+            record.write("{} {} {}".format(iter_idx, task_idx, datetime.datetime.now().strftime("%H:%M:%S %D")))
+    elif:
+        with open(record_file, 'w') as record:
+            record.write("{} {} {}".format(iter_idx, task_idx, datetime.datetime.now().strftime("%H:%M:%S %D")))
+    pass
+

@@ -58,6 +58,7 @@ def make_res_plumed(nconf, jdata, res_path, walker_idx, sel_idx, res_angles, con
     res_prt_file = jdata['res_prt_file']
     frame_freq = jdata['res_frame_freq']
     cwd = os.getcwd()
+    cv_file = os.path.abspath(cv_file)
     for ii in range (conf_start, nconf, conf_every) :
         work_path = os.path.abspath( res_path + ((walker_format + ".%06d") % (walker_idx, sel_idx[ii])) ) + "/"
         os.chdir(work_path)
@@ -124,6 +125,8 @@ def make_res (iter_index,
     fp = open (json_file, 'r')
     jdata = json.load(fp)
     fp.close()
+    json_file = os.path.abspath(json_file)
+    cv_file = os.path.abspath(cv_file)
     numb_walkers = jdata["numb_walkers"]
     bias_nsteps = jdata["bias_nsteps"]
     bias_frame_freq = jdata["bias_frame_freq"]
@@ -146,8 +149,6 @@ def make_res (iter_index,
     _conf_file = enhc_path + make_walker_name(0) + "/" + "conf.gro"
     cv_dim_list = cal_cv_dim (_conf_file, cv_file)
     print(cv_dim_list)
-    # cv_dih_dim = cv_dim_list[0]
-    # cv_dist_dim = cv_dim_list[1]
     cv_dim = sum(cv_dim_list)
 
     cls_sel = None

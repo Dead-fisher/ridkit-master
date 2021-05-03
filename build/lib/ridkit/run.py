@@ -21,6 +21,7 @@ train_name="02.train"
 def run_enhc (iter_index,
               json_file,
               base_dir='./') :
+    json_file = os.path.abspath(json_file)
     base_dir = os.path.abspath(base_dir) + "/"
     iter_name = make_iter_name (iter_index)
     work_path = base_dir + iter_name + "/" + enhc_name + "/"  
@@ -71,6 +72,7 @@ def run_enhc (iter_index,
 def run_res (iter_index,
              json_file,
              base_dir="./") :
+    json_file = os.path.abspath(json_file)
     fp = open (json_file, 'r')
     jdata = json.load (fp)
     fp.close()
@@ -135,9 +137,12 @@ def run_train (iter_index,
                json_file, 
                cv_file,
                base_dir="./") :
+    json_file = os.path.abspath(json_file)
+    cv_file = os.path.abspath(cv_file)
     fp = open (json_file, 'r')
     jdata = json.load (fp)
     fp.close()
+    cv_file = os.path.abspath(cv_file)
     numb_model = jdata["numb_model"]
     train_thread = jdata["train_thread"]
     res_iter = jdata["res_iter"]

@@ -22,7 +22,7 @@ def post_enhc (iter_index,
     base_dir = os.path.abspath(base_dir) + "/"
     iter_name = make_iter_name (iter_index)
     work_path = base_dir + iter_name + "/" + enhc_name + "/"  
-    
+    json_file = os.path.abspath(json_file)
     fp = open (json_file, 'r')
     jdata = json.load (fp)
     fp.close()
@@ -62,15 +62,17 @@ def post_res (iter_index,
               json_file,
               cv_file,
               base_dir="./") :
-    fp = open (json_file, 'r')
-    jdata = json.load (fp)
-    fp.close()
-
+    json_file = os.path.abspath(json_file)
+    cv_file = os.path.abspath(cv_file)
     base_dir = os.path.abspath(base_dir) + "/"
     iter_name = make_iter_name (iter_index)
     res_path = base_dir + iter_name + "/" + res_name + "/"  
     cwd = os.getcwd()
-    
+
+    fp = open (json_file, 'r')
+    jdata = json.load (fp)
+    fp.close()
+
     os.chdir(res_path)
     all_task = glob.glob("/[0-9]*[0-9]")
     all_task = list(filter(lambda x:os.path.isdir(x),  glob.glob("[0-9]*[0-9]")))
