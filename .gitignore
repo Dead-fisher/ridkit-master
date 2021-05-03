@@ -9,3 +9,4 @@ examples/dpdisp.log
 dpdisp.log
 examples/test_rid*
 commit_shell.sh
+pull.sh
