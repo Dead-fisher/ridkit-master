@@ -1,3 +1,4 @@
+README.md
 setup.py
 ridkit/__init__.py
 ridkit/make_enhc.py

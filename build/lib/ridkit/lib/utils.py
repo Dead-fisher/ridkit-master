@@ -126,9 +126,28 @@ def record_task(record_file, iter_idx, task_idx):
 
     if os.path.exists(record_file):
         with open(record_file, 'a') as record:
-            record.write("{} {} {}".format(iter_idx, task_idx, datetime.datetime.now().strftime("%H:%M:%S %D")))
+            record.write("iteration: {} task: {}    task finished at {}\n".format(iter_idx, task_idx, datetime.datetime.now().strftime("%H:%M:%S %D")))
     else:
         with open(record_file, 'w') as record:
-            record.write("{} {} {}".format(iter_idx, task_idx, datetime.datetime.now().strftime("%H:%M:%S %D")))
+            record.write("iteration: {} task: {}    task finished at {}\n".format(iter_idx, task_idx, datetime.datetime.now().strftime("%H:%M:%S %D")))
     pass
+
+def get_checkpoint(record_file):
+    checkpoint = [0, 0]
+    if not os.path.exists(record_file):
+        return [0, 0]
+    else:
+        with open(record_file, 'r') as record:
+            for line in record.readlines():
+                content = line.split()
+                if len(content) == 0:
+                    continue
+                else:
+                    checkpoint = [int(content[1]), int(content[3])]
+        return checkpoint
+
+if __name__ == '__main__':
+    record_task("./new_record.txt", 1, 16)
+    print(get_checkpoint("./no_record.txt"))
+    print(get_checkpoint("./new_record.txt"))
 
