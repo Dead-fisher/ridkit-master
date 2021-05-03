@@ -105,7 +105,7 @@ def make_enhc (iter_index,
 
         # if have prev confout.gro, use as init conf
         if iter_index > 0 :
-            prev_enhc_path = make_iter_name(iter_index-1) + "/" + enhc_name + "/" + make_walker_name(walker_idx) + "/"
+            prev_enhc_path = base_dir + make_iter_name(iter_index-1) + "/" + enhc_name + "/" + make_walker_name(walker_idx) + "/"
             prev_enhc_path = os.path.abspath(prev_enhc_path) + "/"
             if os.path.isfile (prev_enhc_path + "confout.gro") :
                 os.remove (walker_path + "conf.gro")
