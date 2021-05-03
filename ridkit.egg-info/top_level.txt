@@ -1,4 +1,0 @@
-ridkit
-ridkit/lib
-ridkit/lib/gen
-ridkit/lib/nn
