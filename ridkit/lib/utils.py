@@ -133,9 +133,9 @@ def record_task(record_file, iter_idx, task_idx):
     pass
 
 def get_checkpoint(record_file):
-    checkpoint = [0, 0]
+    checkpoint = [-1, -1]
     if not os.path.exists(record_file):
-        return [0, 0]
+        return [-1, -1]
     else:
         with open(record_file, 'r') as record:
             for line in record.readlines():
