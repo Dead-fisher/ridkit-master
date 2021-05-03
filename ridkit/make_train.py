@@ -42,6 +42,7 @@ def collect_data(iter_index, base_dir):
 def make_train (iter_index, 
                 json_file,
                 base_dir="./") :
+    json_file = os.path.abspath(json_file)
     fp = open (json_file, 'r')
     jdata = json.load (fp)
     fp.close()

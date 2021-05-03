@@ -58,8 +58,11 @@ def make_enhc (iter_index,
                cv_file,
                base_dir='./') :
     base_dir = os.path.abspath(base_dir) + "/"
-    graph_files.sort()
     # read json
+    json_file = os.path.abspath(json_file)
+    cv_file = os.path.abspath(cv_file)
+    graph_files = os.path.abspath(graph_files)
+    graph_files.sort()
     fp = open (json_file, 'r')
     jdata = json.load (fp)
     fp.close()
