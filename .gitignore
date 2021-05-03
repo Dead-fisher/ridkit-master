@@ -5,6 +5,7 @@ __pycache__
 *.egg
 dist
 build
-examples/test_rid
 examples/dpdisp.log
 dpdisp.log
+examples/test_rid*
+commit_shell.sh
