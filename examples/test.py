@@ -17,7 +17,7 @@ def main():
     
     iter_numb = int(jdata['numb_iter'])
     for iter_idx in range(iter_numb):
-        for tag in range(numb_task):
+        for tag in range(number_tasks):
             if iter_idx * max_tasks + number_tasks <= checkpoint[0] * max_tasks + checkpoint[0]:
                 continue
             if tag == 0:
