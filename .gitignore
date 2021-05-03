@@ -7,3 +7,4 @@ dist
 build
 examples/test_rid
 examples/dpdisp.log
+dpdisp.log
