@@ -19,10 +19,11 @@ def main():
     if sum(checkpoint) < 0:
         print("prepare gen_rid")
         make_task.gen_rid (out_dir, mol_dir, rid_json)
-
+    
     for iter_idx in range(iter_numb):
         for tag in range(number_tasks):
-            if iter_idx * max_tasks + number_tasks <= checkpoint[0] * max_tasks + checkpoint[0]:
+            if iter_idx * max_tasks + tag <= checkpoint[0] * max_tasks + checkpoint[1]:
+                print(iter_idx, tag, 'pass')
                 continue
             elif tag == 0:
                 print("prepare gen_enhc")
