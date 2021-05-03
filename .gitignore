@@ -1,0 +1,9 @@
+
+# python
+ridkit.egg-info
+__pycache__
+*.egg
+dist
+build
+examples/test_rid
+examples/dpdisp.log
