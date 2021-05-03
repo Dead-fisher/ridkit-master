@@ -14,7 +14,6 @@ def main():
     
     iter_numb = int(jdata['numb_iter'])
     for iter_idx in range(iter_numb):
-<<<<<<< HEAD
         for tag in range():
             if tag == 0:
                 print("prepare gen_rid")
@@ -43,26 +42,6 @@ def main():
             elif tag == 8:
                 print("prepare run train")
                 run.run_train(iter_index=iter_idx, json_file=rid_json, cv_file=cv_file, base_dir=out_dir)
-=======
-        print("prepare gen_rid")
-        make_task.gen_rid (out_dir, mol_dir, rid_json)
-        print("prepare gen_enhc")
-        make_enhc.make_enhc(iter_idx, rid_json, graph_files, mol_dir, cv_file ,base_dir=out_dir)
-        print("prepare run enhc")
-        run.run_enhc(iter_idx, rid_json, base_dir=out_dir)
-        print("prepare post enhc")
-        post_process.post_enhc(iter_idx, rid_json, base_dir=out_dir)
-        print("prepare gen_res")
-        make_res.make_res(iter_index=iter_idx, json_file=rid_json, cv_file=cv_file, mol_path=mol_dir, base_dir=out_dir)
-        print("prepare run res")
-        run.run_res (iter_index=iter_idx, json_file=rid_json, base_dir=out_dir)
-        print("prepare post res")
-        post_process.post_res(iter_index=iter_idx, json_file=rid_json, cv_file=cv_file, base_dir=out_dir)
-        print("prepare gen train")
-        make_train.make_train(iter_index=iter_idx, json_file=rid_json, base_dir=out_dir)
-        print("prepare run train")
-        run.run_train(iter_index=iter_idx, json_file=rid_json, cv_file=cv_file, base_dir=out_dir)
->>>>>>> 22835411dcdd3b1448a5d7a9c3933b7c427f2883
 
 
 if __name__ == "__main__":
