@@ -14,10 +14,11 @@ def main():
     checkpoint = get_checkpoint(record_file)
     max_tasks = 10
     number_tasks = 9
-    
     iter_numb = int(jdata['numb_iter'])
-    print("prepare gen_rid")
-    make_task.gen_rid (out_dir, mol_dir, rid_json)
+
+    if sum(checkpoint) < 0:
+        print("prepare gen_rid")
+        make_task.gen_rid (out_dir, mol_dir, rid_json)
 
     for iter_idx in range(iter_numb):
         for tag in range(number_tasks):
