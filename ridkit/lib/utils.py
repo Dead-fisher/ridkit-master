@@ -123,10 +123,11 @@ def record_task(record_file, iter_idx, task_idx):
     if os.path.basename(record_file) == '':
         print("please assign a valid record file path.")
         raise RuntimeError
+
     if os.path.exists(record_file):
         with open(record_file, 'a') as record:
             record.write("{} {} {}".format(iter_idx, task_idx, datetime.datetime.now().strftime("%H:%M:%S %D")))
-    elif:
+    else:
         with open(record_file, 'w') as record:
             record.write("{} {} {}".format(iter_idx, task_idx, datetime.datetime.now().strftime("%H:%M:%S %D")))
     pass
