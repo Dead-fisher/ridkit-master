@@ -13,7 +13,7 @@ def main():
     record_file = out_dir + "/record.txt"
     checkpoint = get_checkpoint(record_file)
     max_tasks = 10
-    number_tasks = 9
+    number_tasks = 8
     iter_numb = int(jdata['numb_iter'])
 
     if sum(checkpoint) < 0:

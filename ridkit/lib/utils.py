@@ -143,7 +143,7 @@ def get_checkpoint(record_file):
                     continue
                 else:
                     checkpoint = [int(content[1]), int(content[3])]
-        print("The process will start at iteration {} task {}".format(checkpoint[0]+1, checkpoint[1]+1))
+        print("The process will start after iteration {} task {}".format(checkpoint[0], checkpoint[1]))
         return checkpoint
 
 if __name__ == '__main__':
