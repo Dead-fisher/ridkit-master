@@ -78,23 +78,23 @@ def make_threshold(walker_idx, walker_path, base_path, sel_angles, cluster_thres
     if walker_idx ==0:
         cls_sel = sel_from_cluster (sel_angles, cluster_threshold)
         test_numb_cluster=len(set(cls_sel))
-        print(test_numb_cluster)
-        for test_iter in range(500):
+        print('test number of clusters', test_numb_cluster)
+        for test_iter in range(5000):
+            print('test_iter', test_iter)
             if test_numb_cluster < init_numb_cluster[0]:
                 cluster_threshold=cluster_threshold * 0.95
                 cls_sel = sel_from_cluster(sel_angles, cluster_threshold)
                 test_numb_cluster=len(set(cls_sel))
-                print(cluster_threshold)
-                print(test_numb_cluster)
+                print('cluster threshold', cluster_threshold)
+                print('test number clusters', test_numb_cluster)
             elif test_numb_cluster > init_numb_cluster[1]:
                 cluster_threshold=cluster_threshold*1.05
                 cls_sel = sel_from_cluster (sel_angles, cluster_threshold)
                 test_numb_cluster=len(set(cls_sel))
-                print(cluster_threshold)
-                print(test_numb_cluster)
+                print('cluster threshold', cluster_threshold)
+                print('test number clusters', test_numb_cluster)
             else:
-                print(cluster_threshold)
-                print(cluster_threshold)
+                print('cluster threshold', cluster_threshold)
                 np.savetxt (walker_path + 'cluster_threshold.dat', [cluster_threshold], fmt = '%f')
                 np.savetxt (base_path + 'cluster_threshold.dat', [cluster_threshold], fmt = '%f')
                 break
@@ -148,7 +148,6 @@ def make_res (iter_index,
     cwd = os.getcwd()
     _conf_file = enhc_path + make_walker_name(0) + "/" + "conf.gro"
     cv_dim_list = cal_cv_dim (_conf_file, cv_file)
-    print(cv_dim_list)
     cv_dim = sum(cv_dim_list)
 
     cls_sel = None
@@ -180,7 +179,6 @@ def make_res (iter_index,
         else :
             cluster_threshold = jdata["cluster_threshold"]
             sel_idx = range (len(glob.glob (walker_path + enhc_out_conf + "conf*gro")))
-            print(sel_idx)
             sel_angles = np.loadtxt (walker_path + enhc_out_angle)
             sel_angles = np.reshape (sel_angles, [-1, cv_dim])            
             np.savetxt(walker_path + 'sel.out', sel_idx, fmt = '%d')
@@ -191,8 +189,6 @@ def make_res (iter_index,
         conf_every = 1
 
         sel_idx = np.array (sel_idx, dtype = np.int)
-        print(len(sel_idx))
-        print(sel_angles.shape)
         assert (len(sel_idx) == sel_angles.shape[0])
 
         if cls_sel is None:
@@ -219,3 +215,4 @@ def make_res (iter_index,
         log_task ("selected %d confs, indexes: %s" % (nconf, sel_list))
         make_conf(nconf, res_path, walker_idx, walker_path, sel_idx, jdata, mol_path, conf_start=0, conf_every=1)
         make_res_plumed(nconf, jdata, res_path, walker_idx, sel_idx, res_angles, _conf_file, cv_file, conf_start=0, conf_every=1)
+    print("Restrained MD has prepared.")

@@ -205,3 +205,4 @@ def run_train (iter_index,
     for ii in range(numb_model) :
         os.symlink ("%03d/graph.pb" % ii, "graph.%03d.pb" % ii)
     os.chdir (cwd)
+    print("Training finished!")

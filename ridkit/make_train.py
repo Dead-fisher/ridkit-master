@@ -84,3 +84,4 @@ def make_train (iter_index,
             os.chdir(cwd)
             for jj in prev_model_files :
                 shutil.copy (jj, work_path) 
+    print("Training files have prepared.")

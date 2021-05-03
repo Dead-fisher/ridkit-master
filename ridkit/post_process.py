@@ -53,8 +53,8 @@ def post_enhc (iter_index,
     for ii in range(numb_walkers) :
         walker_path = work_path + make_walker_name(ii) + "/"
         angles = np.loadtxt (walker_path + enhc_out_plm)
-        print(angles.shape)
         np.savetxt (walker_path + enhc_out_angle, angles[:,1:], fmt="%.6f")
+    print("Post process of enhanced sampling finished.")
 
 
 
@@ -108,4 +108,5 @@ def post_res (iter_index,
     norm_force = np.linalg.norm (force, axis = 1)
     log_task ("min|f| = %e  max|f| = %e  avg|f| = %e" % 
               (np.min(norm_force), np.max(norm_force), np.average(norm_force)))
-    print('save cmpf done!')
+    print('Saving cmpf finished!')
+    print("Post process of restrained MD finished.")

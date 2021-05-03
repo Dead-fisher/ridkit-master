@@ -14,6 +14,8 @@ def gen_rid (out_dir,
     create_path (out_dir)
     print(conf_file)
     assert (len(conf_file) >= int(numb_walkers)), "number of conformation files must be equal to the number of walkers."
+    print("RiD dir has prepared.")
+
 
 def main_debug():
     create_path("./debug")

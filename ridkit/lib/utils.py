@@ -25,7 +25,6 @@ def create_path (path) :
         while True :
             bk_dirname = dirname + ".bk%03d" % counter
             if not os.path.isdir(bk_dirname) : 
-                # shutil.move (dirname, bk_dirname)
                 os.system("mv {} {}".format(dirname, bk_dirname)) 
                 print("{} has exists, a back-off {} generated!".format(path, bk_dirname))
                 break
@@ -60,7 +59,6 @@ def checkfile(file_path):
 def log_task (message) :
     header = repeat_to_length (" ", len(log_iter_head % (0, 0)))
     logging.info (header + message)
-    # print(header + message)
 
 def repeat_to_length(string_to_expand, length):
     ret = ""
@@ -135,6 +133,7 @@ def record_task(record_file, iter_idx, task_idx):
 def get_checkpoint(record_file):
     checkpoint = [-1, -1]
     if not os.path.exists(record_file):
+        print("no record file exists, a new iteration will start.")
         return [-1, -1]
     else:
         with open(record_file, 'r') as record:
@@ -144,6 +143,7 @@ def get_checkpoint(record_file):
                     continue
                 else:
                     checkpoint = [int(content[1]), int(content[3])]
+        print("The process will start at iteration {} task {}".format(checkpoint[0]+1, checkpoint[1]+1))
         return checkpoint
 
 if __name__ == '__main__':

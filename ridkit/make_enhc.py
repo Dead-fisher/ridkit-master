@@ -132,3 +132,5 @@ def make_enhc (iter_index,
         else :
             log_task ("use NN model(s): " + graph_list)
             log_task ("set trust l1 and l2: %f %f" % (enhc_trust_lvl_1, enhc_trust_lvl_2))
+    print("Enhanced sampling has prepared.")
+
