@@ -8,5 +8,6 @@ build
 examples/dpdisp.log
 dpdisp.log
 examples/test_rid*
+examples/*.md
 commit_shell.sh
 pull.sh
