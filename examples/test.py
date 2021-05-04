@@ -6,7 +6,7 @@ def main():
     mol_dir = './mol'
     rid_json = './rid.json'
     graph_files = []
-    cv_file = "./phipsi_selected.json"
+    cv_file = "./cv.json"
     fp = open(rid_json, 'r')
     jdata = json.load(fp)
     fp.close()
