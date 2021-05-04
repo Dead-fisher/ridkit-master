@@ -6,7 +6,7 @@ fp.close()
 
 
 with open("./new.md", 'w') as md:
-    md.write("| parameters | description | default |\n")
-    md.write("| :----: | :----: | :----: |\n")
+    md.write("| Parameters | Type | Description | Default/Example |\n")
+    md.write("| :----: | :----: | :----: | :----: |\n")
     for ii in jdata:
-        md.write("| {} | * | {} |\n".format(ii, jdata[ii]))
+        md.write("| {} | * | * | {} |\n".format(ii, jdata[ii]))
