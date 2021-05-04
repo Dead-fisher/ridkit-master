@@ -9,17 +9,31 @@ ridkit is a python package for enhanced sampling via RiD(Reinforced Dynamics) me
 #### install dependence
 ridkit will need a specific software environment. We pack a easy-installed shell file located in env install.
 ~~~
+cd ridkit-master
 cd env
-sh rid.sh
+sh gromacs-dp-rid-0.0.5-float-gpu-Linux-x86_64.sh
 ~~~
-Now you have all dependence of RiD (Gromacs, Tensorflow and a conda environment).
+In this environment, Gromacs with 2020.2 version and Single Precision is compiled. Please make sure Cuda and related drive is available so that support GPU calculation can be supported.
+
+Moreover, ridkit python package apply `dpdispatcher` python package to submit jobs to compute nodes (e.g. via Slurm or PBS). Thus, the user should have dpdispatcher installed. Commands below may help.
+~~~
+# change path to a folder where you install dpdispatcher
+git clone https://github.com/deepmodeling/dpdispatcher.git
+cd dpdispatcher
+python setup.py install
+# Try import dpdispatcher in python.
+~~~
+
+Now you have all dependence software for RiD ready (Gromacs, Tensorflow and a conda environment).
+
 ~~~
 cd ritkit-master
 python setup.py install
 ~~~
+
 Open python, try `import ridkit`.
 
-Install successfully if you get no error.
+ritkit is Installed successfully if you get no error.
 
 ## Quick Start
 We offer a simple but complete example in `ridkit/examples`
@@ -30,10 +44,9 @@ cd examples
 python test.py
 ```
 
-To begin with, you should offer a rid configeration file(rid.json), a CV file(phipsi_selected.json) and a dictory(mol/) containing initial conformation files in detail, and the number of conformation files should be equal to the number of walkers for parallel.
+To begin with, you should offer a rid configeration file(rid.json), a CV file(phipsi_selected.json) and a folder(`mol/`) containing initial conformation files in detail, and the number of conformation files should be equal to the number of walkers for parallel.
 
-All these files are presented in `examples` dictory where the users can adjust the parameter as their will.
-
+All these files are presented in `examples` folder where the users can adjust the parameters (which is described in detail in RiD settings Section.) as their will.
 
 
 ## Main procedure of RiD
@@ -73,7 +86,7 @@ Two necessary json files are required to get start a RiD procedure.
 1. rid.json for configuration of simulation.
 2. cv.json for specifying CV.
 
-### rid.json
+## rid.json
 
 **General setting**
 
@@ -121,6 +134,8 @@ Two necessary json files are required to get start a RiD procedure.
 
 **Setting for training and neuro network**
 
+| Parameters | Type | Description | Default/Example |
+| :----: | :----: | :----: | :----: |
 | numb_model | int | number of nn models | 4 |
 | neurons | list&int | number of nodes for each layer | [256, 128, 64, 32] |
 | resnet | bool | whether to use Resnet | True |
@@ -138,6 +153,8 @@ Two necessary json files are required to get start a RiD procedure.
 
 **Settings for job submission**
 
+| Parameters | Type | Description | Default/Example |
+| :----: | :----: | :----: | :----: |
 | machine_type | str | Type of job management system | Slurm |
 | queue_name | str | name of quene | GPU_2080Ti |
 | cleanup | bool | whether clean unnecessary files  | True |
