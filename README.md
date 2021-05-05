@@ -3,6 +3,7 @@
 ## Introduction
 
 ridkit is a python package for enhanced sampling via RiD(Reinforced Dynamics) method.
+>  reference  J. Chem. Phys. **148**, 124113 (2018); https://doi.org/10.1063/1.5019675
 
 ## Installation
 
